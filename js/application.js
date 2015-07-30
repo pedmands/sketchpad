@@ -1,19 +1,21 @@
-var rows = 8;
-var columns = 8;
-var $row = $("<div />", {
-    class: 'row'
-});
-var $square = $("<div />", {
-    class: 'square'
-});
 
 $(document).ready(function () {
-    //add columns to the the temp row object
-    for (var i = 0; i < columns; i++) {
-        $row.append($square.clone());
+	//set grid
+	var number = 16;
+	//draw grid
+	for (var y = 0; y < number; y++) {
+	    for (var x = 0; x < number; x++) {
+	        $('#container').append("<div class='square'></div>");
+	    }
+	    
+	      $("#container").append("<div class='row'></div>");
     }
-    //clone the temp row object with the columns to the wrapper
-    for (var i = 0; i < rows; i++) {
-        $("#container").append($row.clone());
-    }
+    //resize cells
+    divSize = (600)/number;
+    $('.square').width(divSize);
+    $('.square').height(divSize);
+    //color cells
+    $('.square').on('mouseenter', function(){
+	    $(this).addClass('colored');
+    });
 });
